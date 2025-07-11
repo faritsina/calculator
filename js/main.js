@@ -12,3 +12,26 @@ function calculateSum() {
   const firstNumber = parseFloat(firstInput.value);
   const secondNumber = parseFloat(secondInput.value);
 
+  resultDiv.classList.add("hidden");
+  errorDiv.classList.add("hidden");
+
+  if (
+    isNaN(firstNumber) ||
+    isNaN(secondNumber) ||
+    firstInput.value === "" ||
+    secondInput.value === ""
+  ) {
+    errorDiv.classList.remove("hidden");
+    return;
+  }
+
+  const sum = addNumbers(firstNumber, secondNumber);
+
+  resultValue.textContent = sum;
+  resultDiv.classList.remove("hidden");
+
+  resultDiv.style.opacity = "0";
+  setTimeout(() => {
+    resultDiv.style.opacity = "1";
+  }, 100);
+}
